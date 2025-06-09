@@ -12,3 +12,8 @@ services:
       MYSQL_PASSWORD: root
     ports:
       - 3306:3306
+
+
+## docker-compose exec mysql bash
+## mysql -uroot -p dolar_cotacao
+## CREATE TABLE cotacao (id VARCHAR(255), code VARCHAR(10), codein VARCHAR(10), name VARCHAR(100), high VARCHAR(20), low VARCHAR(20), bid VARCHAR(20), timestamp VARCHAR(20), create_date VARCHAR(50), PRIMARY KEY (id));
