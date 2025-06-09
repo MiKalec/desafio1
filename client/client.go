@@ -36,10 +36,13 @@ func main() {
 
 	responseBodyBytes, err := io.ReadAll(res.Body)
 	cotacao := string(responseBodyBytes)
-	toFile := fmt.Sprintf("Dólar: %s", cotacao)
-	_, err = file.WriteString(toFile)
-	if err != nil {
-		log.Println(err)
-		return
+	if cotacao != "" {
+		toFile := fmt.Sprintf("Dólar: %s", cotacao)
+		_, err = file.WriteString(toFile)
+		if err != nil {
+			log.Println(err)
+			return
+		}
 	}
+
 }
