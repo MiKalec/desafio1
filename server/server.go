@@ -45,6 +45,7 @@ func GetCotacaoHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	cotacao, err := getCotacao()
 	if err != nil {
+		log.Println(err)
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
