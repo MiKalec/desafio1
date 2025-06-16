@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -36,8 +37,12 @@ func main() {
 
 	responseBodyBytes, err := io.ReadAll(res.Body)
 	cotacao := string(responseBodyBytes)
+	clean := strings.ReplaceAll(cotacao, "\"", "")
+	clean = strings.ReplaceAll(clean, "\n", "")
+	clean = strings.ReplaceAll(clean, "\r", "")
+
 	if cotacao != "" {
-		toFile := fmt.Sprintf("Dólar: %s", cotacao)
+		toFile := fmt.Sprintf("Dólar: {%s}", clean)
 		_, err = file.WriteString(toFile)
 		if err != nil {
 			log.Println(err)
