@@ -48,6 +48,13 @@ func main() {
 			log.Println(err)
 			return
 		}
+	} else {
+		toFile := "Erro ao obter cotacão, tente novamente"
+		_, err = file.WriteString(toFile)
+		if err != nil {
+			log.Println(err)
+			return
+		}
 	}
 
 }
